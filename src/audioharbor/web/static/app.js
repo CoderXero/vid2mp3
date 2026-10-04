@@ -1,0 +1,3 @@
+const form=document.querySelector('#new-job'), jobs=document.querySelector('#jobs');
+async function refresh(){const r=await fetch('/api/v1/jobs'); const data=await r.json(); jobs.innerHTML=data.map(j=>`<article><a href="/jobs/${j.id}">${j.id}</a><strong>${j.state}</strong><span>${j.counts.completed} completed · ${j.counts.failed} failed</span></article>`).join('')}
+form.addEventListener('submit',async e=>{e.preventDefault();const body=Object.fromEntries(new FormData(form));const r=await fetch('/api/v1/jobs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok) alert((await r.json()).detail||'Unable to start');refresh()}); refresh(); setInterval(refresh,3000);

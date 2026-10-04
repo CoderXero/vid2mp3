@@ -1,0 +1,13 @@
+[Unit]
+Description=AudioHarbor web service
+After=network-online.target
+
+[Service]
+ExecStart=%h/.local/bin/audioharbor serve
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=AudioHarbor worker
+After=network-online.target
+
+[Service]
+ExecStart=%h/.local/bin/audioharbor worker
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
+

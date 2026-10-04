@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "audioharbor"
+version = "0.1.0"
+description = "Local, durable video-to-MP3 downloader"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn[standard]>=0.30,<1",
+  "pydantic>=2.8,<3",
+  "pydantic-settings>=2.4,<3",
+  "sqlalchemy>=2.0,<3",
+  "alembic>=1.13,<2",
+  "jinja2>=3.1,<4",
+  "python-multipart>=0.0.9,<1",
+  "yt-dlp>=2025.1.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "httpx>=0.27", "anyio>=4", "ruff>=0.6"]
+
+[project.scripts]
+audioharbor = "audioharbor.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+

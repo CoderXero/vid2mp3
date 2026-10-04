@@ -1,0 +1,29 @@
+[server]
+host = "127.0.0.1"
+port = 8787
+
+[storage]
+output_dir = "~/Downloads"
+minimum_free_bytes = 1073741824
+history_days = 90
+partial_retention_hours = 24
+
+[worker]
+download_concurrency = 1
+conversion_concurrency = 1
+socket_timeout_seconds = 30
+max_attempts = 5
+
+[limits]
+playlist_entries = 1000
+playlist_depth = 5
+collection_nodes = 20
+media_duration_seconds = 21600
+source_bytes = 2147483648
+
+[media]
+format = "mp3"
+quality_mode = "vbr"
+vbr_quality = 2
+embed_artwork = false
+
